@@ -2,6 +2,8 @@
 
 This extension provides a convenient way of dynamically extracting a list of projects defined in an `angular.json` file, so that they can be used as a Command input in `tasks.json`. Any projects found will be presented in a picker so that the user can easily select.
 
+![Use Extension](images/use-extension.gif)
+
 Projects can also be filtered by providing an optional argument when defining the task input in `tasks.json`.
 
 > Note: Extension will look for the `angular.json` file at the root of the current workspace. Works with standard Angular CLI projects and monorepos created with NX Extensions.
