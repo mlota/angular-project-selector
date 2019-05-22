@@ -43,3 +43,7 @@ tasks.json
   ]
 }
 ```
+
+### Further reading
+
+- [Visual Studio Code Input Variables Reference](https://code.visualstudio.com/docs/editor/variables-reference#_input-variables)
