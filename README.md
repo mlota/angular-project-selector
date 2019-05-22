@@ -1,65 +1,45 @@
-# angular-project-selector README
+# Angular Project Selector
 
-This is the README for your extension "angular-project-selector". After writing up a brief description, we recommend including the following sections.
+This extension provides a convenient way of dynamically extracting a list of projects defined in an `angular.json` file, so that they can be used as a Command input in `tasks.json`. Any projects found will be presented in a picker so that the user can easily select.
 
-## Features
+Projects can also be filtered by providing an optional argument when defining the task input in `tasks.json`.
 
-Describe specific features of your extension including screenshots of your extension in action. Image paths are relative to this README file.
+> Note: Extension will look for the `angular.json` file at the root of the current workspace. Works with standard Angular CLI projects and monorepos created with NX Extensions.
 
-For example if there is an image subfolder under your extension project workspace:
+## Usage
 
-\!\[feature X\]\(images/feature-x.png\)
+The following example shows how the extension can be used to return a list of e2e projects using the filter argument and then passing the selected value as an input parameter to an `ng e2e` command:
 
-> Tip: Many popular extensions utilize animations. This is an excellent way to show off your extension! We recommend short, focused animations that are easy to follow.
+tasks.json
 
-## Requirements
-
-If you have any requirements or dependencies, add a section describing those and how to install and configure them.
-
-## Extension Settings
-
-Include if your extension adds any VS Code settings through the `contributes.configuration` extension point.
-
-For example:
-
-This extension contributes the following settings:
-
-* `myExtension.enable`: enable/disable this extension
-* `myExtension.thing`: set to `blah` to do something
-
-## Known Issues
-
-Calling out known issues can help limit users opening duplicate issues against your extension.
-
-## Release Notes
-
-Users appreciate release notes as you update your extension.
-
-### 1.0.0
-
-Initial release of ...
-
-### 1.0.1
-
-Fixed issue #.
-
-### 1.1.0
-
-Added features X, Y, and Z.
-
------------------------------------------------------------------------------------------------------------
-
-## Working with Markdown
-
-**Note:** You can author your README using Visual Studio Code.  Here are some useful editor keyboard shortcuts:
-
-* Split the editor (`Cmd+\` on macOS or `Ctrl+\` on Windows and Linux)
-* Toggle preview (`Shift+CMD+V` on macOS or `Shift+Ctrl+V` on Windows and Linux)
-* Press `Ctrl+Space` (Windows, Linux) or `Cmd+Space` (macOS) to see a list of Markdown snippets
-
-### For more information
-
-* [Visual Studio Code's Markdown Support](http://code.visualstudio.com/docs/languages/markdown)
-* [Markdown Syntax Reference](https://help.github.com/articles/markdown-basics/)
-
-**Enjoy!**
+```json
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "e2e",
+      "type": "shell",
+      "command": "ng",
+      "args": ["e2e", "${input:app}"],
+      "presentation": {
+        "reveal": "always"
+      },
+      "group": {
+        "kind": "test",
+        "isDefault": true
+      },
+      "problemMatcher": ["$tsc"]
+    }
+  ],
+  "inputs": [
+    {
+      "type": "command",
+      "id": "app",
+      "command": "extension.angularProjectSelector",
+      "args": {
+        "filter": "e2e"
+      }
+    }
+  ]
+}
+```

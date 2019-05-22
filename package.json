@@ -2,12 +2,27 @@
   "name": "angular-project-selector",
   "displayName": "Angular Project Selector",
   "description": "Provides selectors for projects within angular.json file",
-  "version": "0.0.1",
+  "version": "1.0.0",
+  "publisher": "mlota",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/mlota/angular-project-selector"
+  },
+  "icon": "images/angular.png",
+  "galleryBanner": {
+    "color": "#252627",
+    "theme": "dark"
+  },
   "engines": {
     "vscode": "^1.34.0"
   },
   "categories": [
     "Other"
+  ],
+  "keywords": [
+    "Angular",
+    "Project",
+    "Command"
   ],
   "activationEvents": [
     "onCommand:extension.angularProjectSelector"
